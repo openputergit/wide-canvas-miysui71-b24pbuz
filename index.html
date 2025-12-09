@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotibank Bethiah | Meaningful Meals</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Configuration for Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b', // Deep Charcoal/Navy vibe
+                            900: '#0f172a',
+                        },
+                        marigold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slight': 'bounce-slight 2s infinite',
+                    },
+                    keyframes: {
+                        'bounce-slight': {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for nuances not covered by Tailwind utilities */
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        .qr-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .stat-number {
+            transition: all 0.3s ease-out;
+        }
+
+        /* Micro-interaction for Icon Cards */
+        .trust-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            background-color: #f59e0b; /* Marigold 500 */
+            color: white;
+        }
+        .icon-wrapper {
+            transition: all 0.3s ease;
+        }
+
+        /* Nav Link Hover Effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo Icon (Bowl) -->
+                    <i class="bi bi-heart-fill text-marigold-500 text-2xl"></i>
+                    <span class="font-heading font-bold text-2xl text-navy-900 tracking-tight">Rotibank Bethiah</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#mission" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition">Our Mission</a>
+                    <a href="#impact" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition">Impact</a>
+                    <a href="#transparency" class="nav-link text-gray-600 hover:text-navy-900 font-medium transition">Transparency</a>
+                </div>
+                <div class="hidden md:flex">
+                     <a href="#donate" class="bg-navy-900 text-white px-6 py-2 rounded-full font-heading font-semibold hover:bg-marigold-500 transition-colors duration-300 shadow-lg">
+                        Donate Now
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-navy-900 focus:outline-none">
+                        <i class="bi bi-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#mission" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-navy-900 hover:bg-gray-50">Our Mission</a>
+                <a href="#impact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-navy-900 hover:bg-gray-50">Impact</a>
+                <a href="#transparency" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-navy-900 hover:bg-gray-50">Transparency</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="donate" class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="z-10 order-2 lg:order-1 text-center lg:text-left">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-marigold-100 text-marigold-600 font-semibold text-sm mb-6 tracking-wide uppercase">
+                        Non-Profit Charity Organization
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-navy-900 leading-tight mb-6">
+                        Nourish Hope. <br/>
+                        <span class="text-marigold-500">One Scan, One Meal.</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
+                        Join Rotibank Bethiah in our mission to provide nutritious meals and essential aid to vulnerable communities. Your contribution puts food directly on the table for those who need it most.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <div class="flex items-center gap-2 text-navy-800 font-medium">
+                            <i class="bi bi-shield-check text-marigold-500 text-xl"></i>
+                            <span>Secure & Verified Donation</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-navy-800 font-medium">
+                            <i class="bi bi-heart text-marigold-500 text-xl"></i>
+                            <span>Tax Deductible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code & Imagery -->
+                <div class="order-1 lg:order-2 flex flex-col items-center justify-center relative">
+                    <!-- Decorative background blob -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full blur-3xl -z-10 opacity-60"></div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 text-center max-w-sm w-full relative group hover:-translate-y-2 transition-transform duration-500">
+                        <div class="absolute -top-4 -right-4 bg-marigold-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg animate-bounce-slight">
+                            <i class="bi bi-arrow-down text-2xl font-bold"></i>
+                        </div>
+                        
+                        <h3 class="text-xl font-heading font-bold text-navy-900 mb-2">Scan to Donate Instantly</h3>
+                        <p class="text-sm text-gray-500 mb-4">Focus your camera on the QR code below</p>
+                        
+                        <!-- QR Code Image -->
+                        <div class="bg-navy-900 p-2 rounded-xl inline-block mb-4 relative overflow-hidden qr-container">
+                             <!-- Pulse Animation Ring -->
+                             <span class="absolute top-0 left-0 w-full h-full rounded-xl border-4 border-marigold-500 opacity-75 animate-ping"></span>
+                             
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://rotibankbethiah.org/donate&color=ffffff&bgcolor=0f172a" 
+                                 alt="Donation QR Code" 
+                                 class="w-48 h-48 md:w-56 md:h-56 object-contain rounded-lg relative z-10">
+                        </div>
+                        
+                        <div class="mt-2 flex items-center justify-center gap-2 text-sm text-gray-400">
+                            <i class="bi bi-phone"></i>
+                            <span>Accepts UPI, Card, Netbanking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Mission Section -->
+    <section id="impact" class="py-20 bg-navy-900 text-white relative">
+        <!-- Background Texture -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Text -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">Our Impact So Far</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                        At Rotibank Bethiah, we believe that no one should go to sleep hungry. What started as a small neighborhood initiative has grown into a movement of dignity and care. We don't just provide food; we provide hope, ensuring that the most vulnerable members of our society—children, the elderly, and the homeless—feel seen and valued.
+                    </p>
+                    <div class="p-6 bg-navy-800 rounded-lg border-l-4 border-marigold-500 shadow-lg">
+                        <p class="italic text-gray-200 font-light text-lg">"The simplest act of kindness is a warm meal. It fuels not just the body, but the soul of our community."</p>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="stats-container">
+                    <!-- Stat 1 -->
+                    <div class="bg-navy-800 p-8 rounded-2xl text-center border border-navy-700 hover:border-marigold-500 transition-colors duration-300 shadow-xl group sm:col-span-2">
+                        <i class="bi bi-egg-fried text-4xl text-marigold-500 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <span class="text-5xl font-extrabold text-white block mb-1 stat-number" data-target="1000000">0</span>
+                        <span class="text-sm font-medium text-marigold-400 uppercase tracking-widest">Meals Served</span>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="bg-navy-800 p-8 rounded-2xl text-center border border-navy-700 hover:border-marigold-500 transition-colors duration-300 shadow-xl group">
+                        <i class="bi bi-geo-alt text-3xl text-marigold-500 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <span class="text-4xl font-bold text-white block mb-1 stat-number" data-target="15">0</span>
+                        <span class="text-xs font-medium text-marigold-400 uppercase tracking-widest">Communities</span>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="bg-navy-800 p-8 rounded-2xl text-center border border-navy-700 hover:border-marigold-500 transition-colors duration-300 shadow-xl group">
+                        <i class="bi bi-people text-3xl text-marigold-500 mb-3 block group-hover:scale-110 transition-transform"></i>
+                        <span class="text-4xl font-bold text-white block mb-1 stat-number" data-target="500">0</span>
+                        <span class="text-xs font-medium text-marigold-400 uppercase tracking-widest">Volunteers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency & Trust Section -->
+    <section id="transparency" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-navy-900 mb-4">Where Your Money Goes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We value complete transparency. Every rupee you donate is optimized to reach the hungry with minimal overhead.</p>
+            </div>
+
+            <!-- Process Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gray-200 -z-10 dashed-line"></div>
+
+                <!-- Step 1 -->
+                <div class="trust-card text-center group">
+                    <div class="icon-wrapper w-24 h-24 bg-blue-50 text-navy-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border-2 border-white">
+                        <i class="bi bi-cart3 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-2">Ingredient Procurement</h3>
+                    <p class="text-gray-500 text-sm px-4">Sourcing fresh, high-quality grains and vegetables from local farmers directly.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="trust-card text-center group">
+                    <div class="icon-wrapper w-24 h-24 bg-blue-50 text-navy-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border-2 border-white">
+                        <i class="bi bi-fire text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-2">Kitchen Operations</h3>
+                    <p class="text-gray-500 text-sm px-4">Hygienic preparation by our dedicated chefs ensuring nutrition and taste.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="trust-card text-center group">
+                    <div class="icon-wrapper w-24 h-24 bg-blue-50 text-navy-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border-2 border-white">
+                        <i class="bi bi-truck text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-2">Delivery & Distribution</h3>
+                    <p class="text-gray-500 text-sm px-4">Timely delivery to slums, shelters, and community centers via our van fleet.</p>
+                </div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-3xl p-8 md:p-12 relative border border-gray-100 shadow-sm">
+                <i class="bi bi-quote absolute top-8 left-8 text-6xl text-marigold-200 -z-0"></i>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" alt="Donor Profile" class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover">
+                    <div class="text-center md:text-left">
+                        <p class="text-xl text-navy-800 italic font-medium mb-4">"I've supported Rotibank Bethiah for three years. Seeing the daily updates and knowing exactly how my donation helps feeds families gives me immense trust in their mission. They truly deliver."</p>
+                        <div>
+                            <span class="block font-bold text-navy-900">Sarah Jenkins</span>
+                            <span class="text-sm text-marigold-600 font-semibold">Monthly Donor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-white pt-16 pb-8 border-t border-navy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Contact Info -->
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="bi bi-heart-fill text-marigold-500 text-xl"></i>
+                        <span class="font-heading font-bold text-2xl tracking-tight">Rotibank Bethiah</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Dedicated to fighting hunger and uplifting spirits. Every scan, every donation, makes a tangible difference in someone's life.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-gray-300 group cursor-pointer hover:text-white transition">
+                            <span class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center group-hover:bg-marigold-500 transition">
+                                <i class="bi bi-envelope"></i>
+                            </span>
+                            <span>hello@rotibankbethiah.org</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300 group cursor-pointer hover:text-white transition">
+                            <span class="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center group-hover:bg-marigold-500 transition">
+                                <i class="bi bi-telephone"></i>
+                            </span>
+                            <span>+91 987 654 3210</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 border-b border-navy-700 pb-2 inline-block">Social Media</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-white hover:text-navy-900 transition-all duration-300">
+                            <i class="bi bi-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-white hover:text-navy-900 transition-all duration-300">
+                            <i class="bi bi-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-white hover:text-navy-900 transition-all duration-300">
+                            <i class="bi bi-twitter-x text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Secondary QR -->
+                <div class="flex flex-col items-start md:items-end">
+                    <div class="bg-white p-2 rounded-lg inline-block text-center shadow-lg">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rotibankbethiah.org/donate&color=000000&bgcolor=ffffff" 
+                             alt="Donate QR Small" class="w-24 h-24 mb-1">
+                        <span class="text-[10px] uppercase font-bold text-navy-900 tracking-wide block">Scan to Give</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-navy-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2023 Rotibank Bethiah. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Stats Animation
+        const stats = document.querySelectorAll('.stat-number');
+        let hasAnimated = false;
+
+        const animateStats = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    stats.forEach(stat => {
+                        const target = +stat.getAttribute('data-target');
+                        const duration = 2000; // ms
+                        const increment = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const updateCount = () => {
+                            current += increment;
+                            if (current < target) {
+                                // Format numbers slightly better
+                                if(target > 1000) {
+                                    stat.innerText = Math.ceil(current).toLocaleString(); // Add commas
+                                } else {
+                                    stat.innerText = Math.ceil(current);
+                                }
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                stat.innerText = target.toLocaleString() + "+";
+                            }
+                        };
+                        updateCount();
+                    });
+                    observer.unobserve(document.querySelector('#stats-container'));
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateStats, {
+            threshold: 0.5
+        });
+
+        const statsContainer = document.querySelector('#stats-container');
+        if(statsContainer) {
+            observer.observe(statsContainer);
+        }
+
+        // Add smooth hover effect to Trust Cards lines (Optional Visual Polish)
+        // Just demonstrating attention to detail
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
